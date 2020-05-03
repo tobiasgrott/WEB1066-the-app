@@ -1,6 +1,8 @@
 language: java
-jdk: oraclejdk8
+jdk: 
+  - oraclejdk8
 
-script:
+install:
   - ./gradlew clean jar
+script:
   - echo 'testing coming soon'
