@@ -1,7 +1,8 @@
 language: java
 jdk: 
-  - oraclejdk8
   - oraclejdk9
+services:
+  - docker
 
 env:
   - COVERAGE=0.5 BUILD_TARGET=./monolithic/ui
@@ -20,6 +21,6 @@ script:
 
 deploy:
   provider: script
-  script: echo 'WIP'
+  script: bash -c "echo \"${DOCKER_PASSWORD}\" | docker login --username \"${DOCKER_LOGIN}\" --password-stdin"
   on: 
     all_branches: true
