@@ -12,6 +12,8 @@ env:
   - COVERAGE=0.5 BUILD_TARGET=./monolithic/repository/cart
   - COVERAGE=0.5 BUILD_TARGET=./monolithic/repository/product
   - COVERAGE=0.3 BUILD_TARGET=./monolithic/repository/user
+global:
+  secure: DkdlQGJOU3YxiCKfW6u2g1p4PV179Pt3HwZSjSTumAtsaWdk7OeIBWdLfgF3AjKlThDm+POJKRjyUNXhm2OGx257mnyYmGKDvLUJOmsYxjZAnmhzXoD+XuZsUfuNsdQomd7YxUsu6fk3UqA36BeTEGEN0b+mAKAlbSVj87e7Y3ANjsIAa11KEyAKe+AkoTidxI4h68LkxyTtHkKbB+CFOhmmNY0KOFUPFA05xV21pWTUem+rgtlylbeDs3VoqD0pqVERgNjlIiws7qwtKimWpqPQG2dkxjR5TGxjNg+6Z7U4iDw2ELDI3+IVRXp2ib+jK4pMO4YcoTcnwtlTcUBaLkBCozHuQNjnnmD9IqOyZDJkuPs7XgDldr4ATsQTKBTEMNFw2cGiZtJvEv6xvUfTDHwF58UO1s0RJVzub7fPUJles7NNeWjY4HSjbxqagXyc889qLz33dcnvchOkF4k82r3hyZUDATHL4Lm+hkZa7iNHCXbiMG6aPXmOXiHkRYYOF6Vpsz7+59LQ2G3QN9op0CKkZWeYxGL+dhwBRWaeLmC0zgA9i6hDdBm2YX9M0T+wAk6ud5/5ykiVDeKucbenUdbPqFvVLEWBH5g9UBsmjQJMV/22cvKTUw2C9eK3YoD4gQ08Z5EuR4um37RSoMlaHP9T9IPEpL+uxghkLKVfCzQ=
 
 install:
   - ./gradlew clean jar
