@@ -1,10 +1,32 @@
-language: python
-install: "pip install -r requirements.txt"
+language: java
+jdk: 
+  - openjdk8
+services:
+  - docker
 
+env:
+  global:
+    secure: l9VT36KIM7qca5+V3auVNJRTeyonPXZBxHoSmHtbNaEv7pLCId9xnV+TvGk9024PrZQTBwyfFuRhMorOOsBWG4BYiTECdSvym6YllfVk9YijqoXstXcK3dKDw6arNMtnen+ulraDZTyaVsJSD6rONZDd3Z/lTA3JNYJSjA2Qb4lTlf/wgZwaGrJCN127BnQXnumQufJRvDTInDUojnViZXQA37W31JgxIqj5Is7DivPm/Zzot2i5P1S2wnMO1njboCf5u5FwZ7sgt/SbxV7y1LBWQx+mK2WLZLCXbs+Ew9ub+NEJBekMOReV6iOB90g+7k5LYxKZJzwvO/v+EKhV9zSYoUtdAZ+wC4F/kNx8qmDe2a3J99PAQIrUfRQOoXNf9aqtSAQsAsQBw64ATAZx6r0wDbDFLBqbjbVThM5zFvut310yNRs4vNcYLTj6iJNIHF0wo6/qCbLr2Rcg9aTUMDE3TNvYNR4+1E0pGfJzxjT1jgUd7r/JjvXbtBeGy/DHjv6hiRI6X0FeB1QI7nr29e0oYy5Co5q5wyOAKfUjghyc4/psF6A2IPriwdwaUqLNhBOPLTAC1PCJCMfaQP7/zSLqBkPKKtK2xSAkbFbmeP/MgA/0LT+uQiBCOu3mNTBjSamYSUrVWmiQRntIgZuKi/ahes5kU/58w6SQDz/g1PQ=
+  matrix:
+    - COVERAGE=0.318 BUILD_TARGET=./monolithic/ui
+    - COVERAGE=0.318 BUILD_TARGET=./monolithic/service/cart
+    - COVERAGE=0.318 BUILD_TARGET=./monolithic/service/user  
+    - COVERAGE=0.318 BUILD_TARGET=./monolithic/repository/order
+    - COVERAGE=0.318 BUILD_TARGET=./monolithic/repository/cart
+    - COVERAGE=0.318 BUILD_TARGET=./monolithic/repository/product
+    - COVERAGE=0.318 BUILD_TARGET=./monolithic/repository/user  
+
+install:
+- './gradlew clean jar'
 script:
-  # Run ANSIBLE checks
-  # - ANSIBLE0008: Disabled for use of sudo warnings - to address
-  # - ANSIBLE0011: Disabled for all tasks which should be named
-  # - ANSIBLE0012: Disabled (should not change if nothings needs doing) - to address
-  # - ANSIBLE0013: Disabled - few uses of shell commands - to address
-  - find vagrant/provision -name "*.yml" -exec ansible-lint -x ANSIBLE008,ANSIBLE0011,ANSIBLE0012,ANSIBLE0013  {} +
+- ./gradlew -p $BUILD_TARGET check
+after_success:
+- find. -name jacocoTestReport.csv|xargs cat | awk -F',' '{print $3" "$4" "$5}'
+before_deploy:
+- "./gradlew -p ./monolithic/ui packageToContainer ;"
+deploy:
+  provider: script
+  script: "./script/deploy.sh"
+  on:
+    condition: "$BUILD_TARGET == './monolithic/ui'"
+    branch: question-10
