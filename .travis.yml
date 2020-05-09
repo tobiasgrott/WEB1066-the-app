@@ -32,4 +32,4 @@ deploy:
   script: ./script/deploy.sh
   on: 
     branch: question-10
-    condition: $BUILD_TARGET=./monolithic/ui
+    condition: "$BUILD_TARGET=='./monolithic/ui'"
