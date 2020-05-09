@@ -29,7 +29,8 @@ jobs:
 
 deploy:
   provider: script
-  script: ./script/deploy.sh
+  script: bash ./script/deploy.sh
+
   on: 
     branch: question-10
     condition: "$BUILD_TARGET=='./monolithic/ui'"
