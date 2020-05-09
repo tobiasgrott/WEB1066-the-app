@@ -12,10 +12,9 @@ env:
   - COVERAGE=0.5 BUILD_TARGET=./monolithic/repository/cart
   - COVERAGE=0.5 BUILD_TARGET=./monolithic/repository/product
   - COVERAGE=0.3 BUILD_TARGET=./monolithic/repository/user
-
+  
   global:
     secure: l9VT36KIM7qca5+V3auVNJRTeyonPXZBxHoSmHtbNaEv7pLCId9xnV+TvGk9024PrZQTBwyfFuRhMorOOsBWG4BYiTECdSvym6YllfVk9YijqoXstXcK3dKDw6arNMtnen+ulraDZTyaVsJSD6rONZDd3Z/lTA3JNYJSjA2Qb4lTlf/wgZwaGrJCN127BnQXnumQufJRvDTInDUojnViZXQA37W31JgxIqj5Is7DivPm/Zzot2i5P1S2wnMO1njboCf5u5FwZ7sgt/SbxV7y1LBWQx+mK2WLZLCXbs+Ew9ub+NEJBekMOReV6iOB90g+7k5LYxKZJzwvO/v+EKhV9zSYoUtdAZ+wC4F/kNx8qmDe2a3J99PAQIrUfRQOoXNf9aqtSAQsAsQBw64ATAZx6r0wDbDFLBqbjbVThM5zFvut310yNRs4vNcYLTj6iJNIHF0wo6/qCbLr2Rcg9aTUMDE3TNvYNR4+1E0pGfJzxjT1jgUd7r/JjvXbtBeGy/DHjv6hiRI6X0FeB1QI7nr29e0oYy5Co5q5wyOAKfUjghyc4/psF6A2IPriwdwaUqLNhBOPLTAC1PCJCMfaQP7/zSLqBkPKKtK2xSAkbFbmeP/MgA/0LT+uQiBCOu3mNTBjSamYSUrVWmiQRntIgZuKi/ahes5kU/58w6SQDz/g1PQ=
-
 jobs:
   include:
   - stage: build
