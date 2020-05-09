@@ -20,6 +20,6 @@ script:
 - "./gradlew -p $BUILD_TARGET check"
 deploy:
   provider: script
-  script: echo \"${DOCKER_PASSWORD}\"
+  script: bash ./script/deploy.sh
   on:
     all_branches: true
